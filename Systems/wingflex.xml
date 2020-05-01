@@ -16,7 +16,7 @@
 						<value>30</value>
 					</lt>
 					<value>0</value>
-					<property>forces/fbz-aero-lbs-filtered</property>
+					<property>forces/fbz-aero-lbs</property>
 				</ifthen>
 			</function>
 		</fcs_function>
