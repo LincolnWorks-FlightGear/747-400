@@ -458,7 +458,7 @@
 			<property>/instrumentation/altimeter/indicated-altitude-ft</property>
 		</input>
 		<reference>
-			<property>/autopilot/settings/target-altitude-ft</property>
+			<property>/it-autoflight/input/alt</property>
 		</reference>
 		<output>
 			<property>/autopilot/internal/target-climb-rate-fps</property>
@@ -704,7 +704,7 @@
 			</offset>
 		</input>
 		<input>
-			<property>/autopilot/settings/heading-bug-deg</property>
+			<property>/it-autoflight/input/hdg</property>
 			<offset>
 				<property>/orientation/heading-magnetic-deg</property>
 				<scale>-1.0</scale>
@@ -1670,7 +1670,7 @@
 	        <input>
 			<condition>
 				<equals>
-					<property>/autopilot/settings/target-speed-mach</property>
+					<property>/it-autoflight/input/spd-mach</property>
 					<value>0.0</value>
 				</equals>
 			</condition>
@@ -1679,7 +1679,7 @@
 	        <input>
 			<condition>
 				<greater-than>
-					<property>/autopilot/settings/target-speed-mach</property>
+					<property>/it-autoflight/input/spd-mach</property>
 					<value>0.0</value>
 				</greater-than>
 			</condition>
@@ -1689,20 +1689,20 @@
 	        <reference>
 			<condition>
 				<equals>
-					<property>/autopilot/settings/target-speed-mach</property>
+					<property>/it-autoflight/input/spd-mach</property>
 					<value>0</value>
 				</equals>
 			</condition>
-			<property>/autopilot/settings/target-speed-kt</property>
+			<property>/it-autoflight/input/spd-kts</property>
 	        </reference>
 	        <reference>
 			<condition>
 				<greater-than>
-					<property>/autopilot/settings/target-speed-mach</property>
+					<property>/it-autoflight/input/spd-mach</property>
 					<value>0</value>
 				</greater-than>
 			</condition>
-			<property>/autopilot/settings/target-speed-mach</property>
+			<property>/it-autoflight/input/spd-mach</property>
 			<scale>/autopilot/internal/speed-with-pitch-mach-scale-factor</scale>
 	        </reference>
 		<output>
@@ -1791,7 +1791,7 @@
 			<property>/instrumentation/airspeed-indicator/indicated-speed-kt</property>
 		</input>
 		<reference>
-			<property>/autopilot/settings/target-speed-kt</property>
+			<property>/it-autoflight/input/spd-kts</property>
 		</reference>
 		<output>
 			<property>/autopilot/internal/speed-error-kt</property>

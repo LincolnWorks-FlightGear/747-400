@@ -75,8 +75,8 @@ var canvas_PFD = {
 		var hdg =  getprop("orientation/heading-deg");
 		var vSpd = getprop("/velocities/vertical-speed-fps");
 		var wow = getprop("gear/gear/wow");
-		var apAlt = getprop("autopilot/settings/target-altitude-ft");
-		var apSpd = getprop("autopilot/settings/target-speed-kt");
+		var apAlt = getprop("it-autoflight/input/alt");
+		var apSpd = getprop("it-autoflight/input/spd-kts");
 		
 		#10 deg = 105px
 		me.h_trans.setTranslation(0,pitch*10.5);
@@ -311,7 +311,7 @@ var canvas_PFD = {
 		var wow = getprop("gear/gear/wow");
 		var flaps = getprop("/controls/flight/flaps");
 		var alt = getprop("instrumentation/altimeter/indicated-altitude-ft");
-		var apSpd = getprop("autopilot/settings/target-speed-kt");
+		var apSpd = getprop("it-autoflight/input/spd-kts");
 		var dh = getprop("instrumentation/mk-viii/inputs/arinc429/decision-height");
 		
 		if (var navId = getprop("instrumentation/nav/nav-id") != nil)
@@ -389,7 +389,7 @@ var canvas_PFD = {
 		me["baroSet"].setText(sprintf("%2.2f",getprop("instrumentation/altimeter/setting-inhg")));
 		me["ilsCourse"].setText(sprintf("CRS %3.0f",getprop("instrumentation/nav/radials/selected-deg")));
 		me["dhText"].setText(sprintf("DH%3.0f",dh));
-		me["selHdgText"].setText(sprintf("%3.0f",getprop("autopilot/settings/true-heading-deg")));
+		me["selHdgText"].setText(sprintf("%3.0f",getprop("it-autoflight/input/hdg")));
 		me["speedText"].setText(sprintf("%3.0f",apSpd));
         
 		#if (getprop("instrumentation/dme/in-range")) {

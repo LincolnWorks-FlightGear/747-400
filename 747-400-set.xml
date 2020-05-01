@@ -79,7 +79,15 @@
 	<systems>
 		<autopilot>
 			<name>Primary Autopilot</name>
-			<path>Aircraft/747-400/Systems/autopilot.xml</path>
+			<path>Aircraft/747-400/Systems/it-autoflight.xml</path>
+		</autopilot>
+		<autopilot>
+			<name>IT-AUTOTHRUST</name>
+			<path>Aircraft/747-400/Systems/it-autothrust.xml</path>
+		</autopilot>
+		<autopilot>
+			<name>Gear AGL FT</name>
+			<path>Aircraft/747-400/Systems/gear-agl-ft.xml</path>
 		</autopilot>
 		<autopilot>
 			<name>Autobrake System</name>
@@ -345,6 +353,49 @@ left mouse button and counter clockwise using the middle mouse button.
 	</multiplay>
 
 </sim>
+
+<it-autoflight>
+	<config>
+		<roll>
+			<kp-low>0.11</kp-low> <!-- Kp at low speed -->
+			<kp-high>0.05</kp-high> <!-- Kp at high speed -->
+			<ti>1.0</ti>
+			<td>0.0001</td>
+		</roll>
+		<pitch>
+			<kp-low>-0.14</kp-low> <!-- Kp at low speed -->
+			<kp-high>-0.06</kp-high> <!-- Kp at high speed -->
+			<ti>0.5</ti>
+			<td>0.001</td>
+		</pitch>
+		<cmd>
+			<hdg>1.6</hdg>
+			<vorloc>2.6</vorloc>
+			<alt-gain>-5</alt-gain>
+		</cmd>
+		<autoland> 
+			<pitch-kp>0.0051</pitch-kp>
+			<yaw-kp>-0.05</yaw-kp>
+		</autoland>
+		<rollout>
+			<roll-kp>-0.1</roll-kp>
+			<pitch-defl>0.15</pitch-defl>
+			<yaw-kp>-0.02</yaw-kp>
+		</rollout>
+	</config>
+	<settings>
+		<auto-bank-max-deg>30</auto-bank-max-deg> <!-- Maximum Auto Bank Limit -->
+		<disable-final>0</disable-final> <!-- Disable the Final Controllers, for custom FCS integration -->
+		<land-enable>1</land-enable> <!-- Enable/Disable Autoland -->
+		<land-flap>0.7</land-flap> <!-- Minimum Flap used for Landing -->
+		<retard-ft>50</retard-ft> <!-- Enable Thrust Retard -->
+		<retard-enable>1</retard-enable> <!-- AGL to Thrust Retard -->
+		<togaspd>160</togaspd> <!-- V2 + 10kts -->
+		<lat-agl-ft>50</lat-agl-ft> <!-- AGL when LNAV becomes active if armed -->
+		<reduc-agl-ft>1500</reduc-agl-ft> <!-- AGL when T/O CLB changes to SPD CLB (FLCH), set to 0 to disable -->
+		<autoland-without-ap>1</autoland-without-ap> <!-- Engage LAND and FLARE Modes even if the AP is off -->
+	</settings>
+</it-autoflight>
 
 <consumables>
 	<fuel>
@@ -780,8 +831,8 @@ left mouse button and counter clockwise using the middle mouse button.
 
 <nasal>
 	<Boeing747>
-		<file>Aircraft/747-400/Nasal/autopilot.nas</file>
-		<file>Aircraft/747-400/Nasal/autopilot-routemanager.nas</file>
+		<!--<file>Aircraft/747-400/Nasal/autopilot.nas</file>
+		<file>Aircraft/747-400/Nasal/autopilot-routemanager.nas</file>-->
 		<file>Aircraft/747-400/Nasal/copilot.nas</file>
 		<file>Aircraft/747-400/Nasal/doors.nas</file>
 		<file>Aircraft/747-400/Models/Cockpit/Instruments/EICAS/doors.nas</file>
@@ -823,6 +874,9 @@ left mouse button and counter clockwise using the middle mouse button.
 	<walk>
 		<file>Aircraft/747-400/Nasal/walk.nas</file>
 	</walk>
+	<itaf>
+  	  <file>Aircraft/747-400/Nasal/it-autoflight.nas</file>
+	</itaf>
 </nasal>
 
 <payload>

@@ -787,7 +787,7 @@ var AltitudeHoldPidControllerAdjust = {
 		#print("adjustMinMaxClimbRate: climbRateInterpolationCounter=", me.climbRateInterpolationCounter);
 
 		if (getprop("/autopilot/locks/altitude") == "vertical-speed-hold") {
-			var verticalSpeedFpm = getprop("/autopilot/settings/vertical-speed-fpm");
+			var verticalSpeedFpm = getprop("/it-autoflight/input/vs");
 
 			var verticalSpeedDiff = verticalSpeedFpm - me.verticalSpeedFpmClambed;
 
@@ -892,8 +892,8 @@ var listenerApAltitudeClambSwitchFunc = func {
 		altitudePidControllerAdjust.interpolateTd();
 		altitudePidControllerAdjust.interpolateMinMaxClimbRate(40);
 
-		targetAltitudeFtPrev = getprop("/autopilot/settings/target-altitude-ft");
-		verticalSpeedFpmPrev = getprop("/autopilot/settings/vertical-speed-fpm");
+		targetAltitudeFtPrev = getprop("/it-autoflight/input/alt");
+		verticalSpeedFpmPrev = getprop("/it-autoflight/input/vs");
 		targetPitchDegPrev = getprop("/autopilot/settings/target-pitch-deg");
 		targetAoaDegPrev = getprop("/autopilot/settings/target-aoa-deg");
 		targetAglFtPrev = getprop("/autopilot/settings/target-agl-ft");
@@ -911,8 +911,8 @@ var listenerApAltitudeClambFunc = func {
 		getprop("/autopilot/locks/altitude") == "gs1-hold" or
 		getprop("/autopilot/locks/speed") == "speed-with-pitch-trim") {
 
-		if (	getprop("/autopilot/settings/target-altitude-ft") != targetAltitudeFtPrev or
-			getprop("/autopilot/settings/vertical-speed-fpm") != verticalSpeedFpmPrev or
+		if (	getprop("/it-autoflight/input/alt") != targetAltitudeFtPrev or
+			getprop("/it-autoflight/input/vs") != verticalSpeedFpmPrev or
 			getprop("/autopilot/settings/target-pitch-deg") != targetPitchDegPrev or
 			getprop("/autopilot/settings/target-aoa-deg") != targetAoaDegPrev or
 			getprop("/autopilot/settings/target-agl-ft") != targetAglFtPrev) {
@@ -922,8 +922,8 @@ var listenerApAltitudeClambFunc = func {
 			altitudePidControllerAdjust.interpolateTd();
 			altitudePidControllerAdjust.interpolateMinMaxClimbRate(40);
 
-			targetAltitudeFtPrev = getprop("/autopilot/settings/target-altitude-ft");
-			verticalSpeedFpmPrev = getprop("/autopilot/settings/vertical-speed-fpm");
+			targetAltitudeFtPrev = getprop("/it-autoflight/input/alt");
+			verticalSpeedFpmPrev = getprop("/it-autoflight/input/vs");
 			targetPitchDegPrev = getprop("/autopilot/settings/target-pitch-deg");
 			targetAoaDegPrev = getprop("/autopilot/settings/target-aoa-deg");
 			targetAglFtPrev = getprop("/autopilot/settings/target-agl-ft");
@@ -934,8 +934,8 @@ var listenerApAltitudeClambFunc = func {
 setlistener("/autopilot/locks/speed", listenerApAltitudeClambSwitchFunc);	# for 'speed-with-pitch-trim'
 		
 setlistener("/autopilot/locks/altitude", listenerApAltitudeClambSwitchFunc);
-setlistener("/autopilot/settings/target-altitude-ft", listenerApAltitudeClambFunc);
-setlistener("/autopilot/settings/vertical-speed-fpm", listenerApAltitudeClambFunc);
+setlistener("/it-autoflight/input/alt", listenerApAltitudeClambFunc);
+setlistener("/it-autoflight/input/vs", listenerApAltitudeClambFunc);
 setlistener("/autopilot/settings/target-pitch-deg", listenerApAltitudeClambFunc);
 setlistener("/autopilot/settings/target-aoa-deg", listenerApAltitudeClambFunc);
 setlistener("/autopilot/settings/target-agl-ft", listenerApAltitudeClambFunc);
@@ -1088,7 +1088,7 @@ var listenerApSpeedWithPitchSwitchFunc = func {
 
 setlistener("/autopilot/locks/speed", listenerApSpeedWithPitchFunc);
 setlistener("/autopilot/locks/speed", listenerApSpeedWithPitchClambFunc);
-setlistener("/autopilot/settings/target-speed-kt", listenerApSpeedWithPitchClambFunc);
+setlistener("/it-autoflight/input/spd-kts", listenerApSpeedWithPitchClambFunc);
 setlistener("/autopilot/locks/speed", listenerApSpeedWithPitchSwitchFunc);
 
 
@@ -1147,7 +1147,7 @@ var listenerApSwitchHeadingClambFunc = func {
 
 # do not enable 'true-heading-deg', because of route-manager activates the function permanently
 setlistener("/autopilot/settings/true-heading-deg", listenerApTrueHeadingClambFunc);
-setlistener("/autopilot/settings/heading-bug-deg", listenerApHeadingClambFunc);
+setlistener("/it-autoflight/input/hdg", listenerApHeadingClambFunc);
 setlistener("/autopilot/locks/heading", listenerApSwitchHeadingClambFunc);
 # setlistener("/autopilot/settings/gps-driving-true-heading", listenerApHeadingClambFunc);
 

@@ -68,7 +68,7 @@ var apHeadingWaypointSetVSpeed = func {
 			var currentWaypointIndex = getprop("autopilot/route-manager/current-wp");
 			#print("apHeadingWaypointSetVSpeed: currentWaypointIndex=", currentWaypointIndex);
 			var altitudeFt = getprop("position/altitude-ft");
-			var autopilotSettingAltitudeFt = getprop("autopilot/settings/target-altitude-ft");
+			var autopilotSettingAltitudeFt = getprop("it-autoflight/input/alt");
 			var waypointAlt = getprop("autopilot/route-manager/route/wp["~currentWaypointIndex~"]/altitude-ft");
 
 			if (autopilotSettingAltitudeFt == nil or autopilotSettingAltitudeFt < 0) {
@@ -115,7 +115,7 @@ var apHeadingWaypointSetVSpeed = func {
 			vspeed = (vspeed > maxClimpRate ? maxClimpRate : vspeed);
 
 			#print("apHeadingWaypointSetVSpeed: listenerApHeadingWaypoint: vspeed=", vspeed);
-			var vspeedPrev = getprop("autopilot/settings/vertical-speed-fpm");
+			var vspeedPrev = getprop("it-autoflight/input/vs");
 			if (vspeedPrev == nil) {
 				vspeedPrev = waypointVspeedMaxValue;
 			}
@@ -127,7 +127,7 @@ var apHeadingWaypointSetVSpeed = func {
 				waypointVspeedChangedManually = 1;
 			}
 			if (waypointVspeedChangedManually == 0 and (abs(vspeed) > abs(vspeedPrev * 0.05))) {
-				setprop("autopilot/settings/vertical-speed-fpm", vspeed);
+				setprop("it-autoflight/input/vs", vspeed);
 				waypointVspeedPrev = vspeed;
 			}
 
@@ -241,7 +241,7 @@ var listenerApPassiveMode = func {
 				}
 
 				var altitudeFt = getprop("instrumentation/altimeter/indicated-altitude-ft");
-				var autopilotSettingAltitudeFt = getprop("autopilot/settings/target-altitude-ft");
+				var autopilotSettingAltitudeFt = getprop("it-autoflight/input/alt");
 				var waypointAlt = getprop("autopilot/route-manager/route/wp["~currentWaypointIndex~"]/altitude-ft");
 				if (autopilotSettingAltitudeFt == nil or autopilotSettingAltitudeFt < 0) {
 					if (waypointAlt != nil) {

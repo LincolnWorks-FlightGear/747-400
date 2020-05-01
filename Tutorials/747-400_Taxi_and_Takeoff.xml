@@ -112,7 +112,7 @@
 					<value>183</value>
 				</equals>
 				<equals>
-					<property>/autopilot/settings/target-speed-kt</property>
+					<property>/it-autoflight/input/spd-kts</property>
 					<property>/instrumentation/fmc/vspeeds/V2</property>
 				</equals>
 				<equals>
