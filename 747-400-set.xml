@@ -36,9 +36,24 @@
 		<switch type="bool"></switch>
 	</sound>
 
-	<startup>
-		<splash-texture>Aircraft/747-400/splash.png</splash-texture>
-	</startup>
+		 <previews>
+	   	 <!-- Splash starts here -->
+          		<preview>
+               			 <type>exterior</type>
+                		 <splash type="bool">true</splash>
+                	         <path>Splash/splash1.png</path>
+            	        </preview>
+			<preview>
+               			 <type>exterior</type>
+                		 <splash type="bool">true</splash>
+                	         <path>Splash/splash2.png</path>
+            	        </preview>
+			<preview>
+               			 <type>exterior</type>
+                		 <splash type="bool">true</splash>
+                	         <path>Splash/splash3.png</path>
+            	        </preview>
+		</previews>
 
 	<airport>
 		<runways>
