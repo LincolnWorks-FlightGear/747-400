@@ -7,6 +7,20 @@
     
     <channel name="wingflex">
 		
+		<fcs_function name="forces/fbz-aero-lbs-filtered">
+			<function>
+				<description>When speed is below ~40 knots, wind may cause spurious alpha values, breaking wingflex</description>
+				<ifthen>
+					<lt>
+						<property>velocities/vc-kts</property>
+						<value>30</value>
+					</lt>
+					<value>0</value>
+					<property>forces/fbz-aero-lbs-filtered</property>
+				</ifthen>
+			</function>
+		</fcs_function>
+		
 		<fcs_function name="forces/wing[1]">
 			<function name="forces/wing-flex[1]">
                 <description>Wing_one_flex</description>
@@ -16,7 +30,7 @@
 						<value>-0.15</value>
 					</product>
 					<product>
-						<property>forces/fbz-aero-lbs</property>
+						<property>forces/fbz-aero-lbs-filtered</property>
 						<value>-0.02</value>
 					</product>
                 </sum>
@@ -32,7 +46,7 @@
 						<value>-0.1</value>
 					</product>
 					<product>
-						<property>forces/fbz-aero-lbs</property>
+						<property>forces/fbz-aero-lbs-filtered</property>
 						<value>-0.02</value>
 					</product>
                 </sum>
@@ -48,7 +62,7 @@
 						<value>-0.1</value>
 					</product>
 					<product>
-						<property>forces/fbz-aero-lbs</property>
+						<property>forces/fbz-aero-lbs-filtered</property>
 						<value>-0.02</value>
 					</product>
                 </sum>
@@ -64,7 +78,7 @@
 						<value>-0.15</value>
 					</product>
 					<product>
-						<property>forces/fbz-aero-lbs</property>
+						<property>forces/fbz-aero-lbs-filtered</property>
 						<value>-0.02</value>
 					</product>
                 </sum>
