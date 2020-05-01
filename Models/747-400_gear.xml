@@ -125,7 +125,7 @@
  <object-name>GearNoseWheels</object-name>
  <condition>
   <less-than>
-   <property>position/altitude-agl-ft</property>        <!-- weight sensor -->
+   <property>position/gear-agl-ft</property>        <!-- weight sensor -->
    <value>30.0</value>
   </less-than>
  </condition>
@@ -148,8 +148,8 @@
  <object-name>GearNoseTorqueLinkLow</object-name>
  <object-name>GearNoseMainStrutPist</object-name>
  <object-name>GearNoseWheels</object-name>
- <property>gear/gear[0]/compression-ft</property>
- <factor>0.3</factor>
+ <property>gear/gear[0]/compression-norm</property>
+ <factor>0.3048</factor>
  <axis>
   <x>0</x>
   <y>0</y>
@@ -286,8 +286,8 @@
 <animation>
  <type>translate</type>
  <object-name>GearWingLeftWheels</object-name>
- <property>gear/gear[1]/compression-ft</property>
- <factor>0.3</factor>
+ <property>gear/gear[1]/compression-norm</property>
+ <factor>0.3048</factor>
  <axis>
   <x>0</x>
   <y>0</y>
@@ -298,18 +298,18 @@
 <animation>
  <type>rotate</type>
  <object-name>GearWingLeftWheels</object-name>
- <property>position/altitude-agl-ft</property>
+ <property>position/gear-agl-ft</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
    <dep>0</dep>
   </entry>
   <entry>
-   <ind>18</ind>
+   <ind>5</ind>
    <dep>0</dep>
   </entry>
   <entry>
-   <ind>23</ind>
+   <ind>7</ind>
    <dep>60</dep>
   </entry>
   <entry>
@@ -533,7 +533,7 @@
  <type>translate</type>
  <object-name>GearWingRightWheels</object-name>
  <property>gear/gear[4]/compression-norm</property>
- <factor>0.6</factor>
+ <factor>0.3048</factor>
  <axis>
   <x>0</x>
   <y>0</y>
@@ -544,18 +544,18 @@
 <animation>
  <type>rotate</type>
  <object-name>GearWingRightWheels</object-name>
- <property>position/altitude-agl-ft</property>
+ <property>position/gear-agl-ft</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
    <dep>0</dep>
   </entry>
   <entry>
-   <ind>18</ind>
+   <ind>5</ind>
    <dep>0</dep>
   </entry>
   <entry>
-   <ind>23</ind>
+   <ind>7</ind>
    <dep>60</dep>
   </entry>
   <entry>
@@ -789,7 +789,7 @@
  <type>translate</type>
  <object-name>GearBodyLeftWheels</object-name>
  <property>gear/gear[2]/compression-norm</property>
- <factor>0.6</factor>
+ <factor>0.3048</factor>
  <axis>
   <x>0</x>
   <y>0</y>
@@ -800,18 +800,18 @@
 <animation>
  <type>rotate</type>
  <object-name>GearBodyLeftWheels</object-name>
- <property>position/altitude-agl-ft</property>
+ <property>position/gear-agl-ft</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
    <dep>0</dep>
   </entry>
   <entry>
-   <ind>18</ind>
+   <ind>5</ind>
    <dep>0</dep>
   </entry>
   <entry>
-   <ind>23</ind>
+   <ind>7</ind>
    <dep>10</dep>
   </entry>
   <entry>
@@ -951,9 +951,9 @@
 
 <animation>
  <type>translate</type>
- <object-name>GearBodyRight</object-name>
+ <object-name>GearBodyRightWheels</object-name>
  <property>gear/gear[3]/compression-norm</property>
- <factor>0.6</factor>
+ <factor>0.3048</factor>
   <axis>
    <x>0</x>
    <y>0</y>
@@ -964,18 +964,18 @@
 <animation>
  <type>rotate</type>
  <object-name>GearBodyRightWheels</object-name>
- <property>position/altitude-agl-ft</property>
+ <property>position/gear-agl-ft</property>
  <interpolation>
   <entry>
    <ind>0.0</ind>
    <dep>0</dep>
   </entry>
   <entry>
-   <ind>18</ind>
+   <ind>5</ind>
    <dep>0</dep>
   </entry>
   <entry>
-   <ind>23</ind>
+   <ind>7</ind>
    <dep>10</dep>
   </entry>
   <entry>
