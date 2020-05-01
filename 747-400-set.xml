@@ -363,8 +363,8 @@ left mouse button and counter clockwise using the middle mouse button.
 			<td>0.0001</td>
 		</roll>
 		<pitch>
-			<kp-low>-0.14</kp-low> <!-- Kp at low speed -->
-			<kp-high>-0.06</kp-high> <!-- Kp at high speed -->
+			<kp-low>-0.12</kp-low> <!-- Kp at low speed -->
+			<kp-high>-0.05</kp-high> <!-- Kp at high speed -->
 			<ti>0.5</ti>
 			<td>0.001</td>
 		</pitch>

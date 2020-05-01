@@ -64,19 +64,19 @@ var canvas_PFD = {
 	},
 	update: func()
 	{
-		var radioAlt = getprop("position/altitude-agl-ft")-24;
+		var radioAlt = getprop("/position/altitude-agl-ft")-24;
 		#var radioAlt = getprop("instrumentation/radar-altimeter/radar-altitude-ft") or 0;
-		var alt = getprop("instrumentation/altimeter/indicated-altitude-ft");
-		var ias = getprop("instrumentation/airspeed-indicator/indicated-speed-kt");
+		var alt = getprop("/instrumentation/altimeter/indicated-altitude-ft");
+		var ias = getprop("/instrumentation/airspeed-indicator/indicated-speed-kt");
 		if (ias < 30)
 			ias = 30;
-		var pitch = getprop("orientation/pitch-deg");
-		var roll =  getprop("orientation/roll-deg");
-		var hdg =  getprop("orientation/heading-deg");
+		var pitch = getprop("/orientation/pitch-deg");
+		var roll =  getprop("/orientation/roll-deg");
+		var hdg =  getprop("/orientation/heading-deg");
 		var vSpd = getprop("/velocities/vertical-speed-fps");
-		var wow = getprop("gear/gear/wow");
-		var apAlt = getprop("it-autoflight/input/alt");
-		var apSpd = getprop("it-autoflight/input/spd-kts");
+		var wow = getprop("/gear/gear/wow");
+		var apAlt = getprop("/it-autoflight/input/alt");
+		var apSpd = getprop("/it-autoflight/input/spd-kts");
 		
 		#10 deg = 105px
 		me.h_trans.setTranslation(0,pitch*10.5);
@@ -86,17 +86,25 @@ var canvas_PFD = {
 		me["compass"].setRotation(-hdg*D2R);
 			
 		# Flight director
-		if (getprop("autopilot/locks/passive-mode") == 1) {
-			if (getprop("autopilot/internal/target-roll-deg") != nil) {
-				var fdRoll = (roll-getprop("/autopilot/internal/target-roll-deg"))*10.5;
-				if (fdRoll > 200)
-					fdRoll = 200;
-				elsif (fdRoll < -200)
-					fdRoll = -200;
+		if (getprop("/it-autoflight/input/fd1") or getprop("/it-autoflight/input/fd2")) {
+			if (getprop("/it-autoflight/fd/roll-bar") != nil) {
+				var fdRoll = (roll-getprop("/it-autoflight/fd/roll-bar"))*3;
+				if (fdRoll > 90)
+					fdRoll = 90;
+				elsif (fdRoll < -90)
+					fdRoll = -90;
 				me["fdX"].setTranslation(-fdRoll,0);
 			}
+			if (getprop("/it-autoflight/fd/pitch-bar") != nil) {
+				var fdPitch = (pitch-getprop("/it-autoflight/fd/pitch-bar"))*5;
+				if (fdPitch > 100)
+					fdPitch = 100;
+				elsif (fdPitch < -75)
+					fdPitch = -75;
+				me["fdY"].setTranslation(0,fdPitch);
+			}
 			me["fdX"].show();
-			#me["fdY"].show();
+			me["fdY"].show();
 		} else {
 			me["fdX"].hide();
 			me["fdY"].hide();
