@@ -278,11 +278,11 @@ var canvas_PFD = {
 			me["afdsMode"].setText("");
 		}
 		
-		me["atMode"].setText(itaf.Text.thr.getValue());
+		me["atMode"].setText(itaf.fmaThr.getValue());
 		me["atArmText"].setText("");
-		me["rollMode"].setText(itaf.Text.lat.getValue());
-		me["latArmText"].setText(itaf.Text.arm.getValue());
-		me["pitchMode"].setText(itaf.Text.vert.getValue());
+		me["rollMode"].setText(itaf.fmaLat.getValue());
+		me["latArmText"].setText(itaf.fmaArm.getValue());
+		me["pitchMode"].setText(itaf.fmaVert.getValue());
 		
 		if (itaf.Output.apprArm.getValue())
 		    me["vertArmText"].setText("G/S");
@@ -303,7 +303,7 @@ var canvas_PFD = {
 		var apSpd = getprop("it-autoflight/input/spd-kts");
 		var dh = getprop("instrumentation/mk-viii/inputs/arinc429/decision-height");
 		
-		if (var navId = getprop("instrumentation/nav/nav-id") != nil)
+		if (var navId = getprop("instrumentation/nav/data-is-valid") != nil)
 			me["ilsId"].setText(navId);
 		
 		var v1 = getprop("instrumentation/fmc/speeds/v1-kt") or 0;
