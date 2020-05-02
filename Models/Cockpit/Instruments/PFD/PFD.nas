@@ -25,7 +25,7 @@ var canvas_PFD = {
 		
 		canvas.parsesvg(pfd, "Aircraft/747-400/Models/Cockpit/Instruments/PFD/PFD.svg", {'font-mapper': font_mapper});
 		
-		var svg_keys = ["afdsMode","altTape","altText1","altText2","atMode","bankPointer","baroSet","cmdSpd","compass","curAlt1","curAlt2","curAlt3","curAltBox","curAltMtrTxt","curSpd","curSpdTen","dhText","dmeDist","fdX","fdY","flaps0","flaps1","flaps10","flaps20","flaps5","gpwsAlert","gsPtr","gsScale","horizon","ilsCourse","ilsId","locPtr","locScale","locScaleExp","machText","markerBeacon","markerBeaconText","maxSpdInd","mcpAltMtr","minimums","minSpdInd","pitchMode","radioAltInd","risingRwy","risingRwyPtr","rollMode","selAltBox","selAltPtr","selHdgText","spdTape","spdTrend","speedText","tenThousand","touchdown","v1","v2","vertSpd","vr","vref","vsiNeedle","vsPointer"];
+		var svg_keys = ["afdsMode","altTape","altText1","altText2","atMode","bankPointer","baroSet","cmdSpd","compass","curAlt1","curAlt2","curAlt3","curAltBox","curAltMtrTxt","curSpd","curSpdTen","dhText","dmeDist","fdX","fdY","flaps0","flaps1","flaps10","flaps20","flaps5","gpwsAlert","gsPtr","gsScale","horizon","ilsCourse","ilsId","locPtr","locScale","locScaleExp","machText","markerBeacon","markerBeaconText","maxSpdInd","mcpAltMtr","minimums","minSpdInd","pitchMode","radioAltInd","risingRwy","risingRwyPtr","rollMode","selAltBox","selAltPtr","selHdgText","spdTape","spdTrend","speedText","tenThousand","touchdown","v1","v2","vertSpd","vr","vref","vsiNeedle","vsPointer","atArmText","latArmText","vertArmText"];
 		foreach(var key; svg_keys) {
 			m[key] = pfd.getElementById(key);
 		}
@@ -53,12 +53,6 @@ var canvas_PFD = {
 		m["compass"].set("clip", "rect(700, 1024, 990, 0)");
 		m["curAlt3"].set("clip", "rect(463, 1024, 531, 0)");
 		m["curSpdTen"].set("clip", "rect(455, 1024, 541, 0)");
-		
-		setlistener("autopilot/locks/passive-mode",            func { m.update_ap_modes() } );
-		setlistener("autopilot/locks/altitude",                func { m.update_ap_modes() } );
-		setlistener("autopilot/locks/heading",                 func { m.update_ap_modes() } );
-		setlistener("autopilot/locks/speed",                   func { m.update_ap_modes() } );
-		m.update_ap_modes();
 
 		return m;
 	},
@@ -88,20 +82,20 @@ var canvas_PFD = {
 		# Flight director
 		if (getprop("/it-autoflight/input/fd1") or getprop("/it-autoflight/input/fd2")) {
 			if (getprop("/it-autoflight/fd/roll-bar") != nil) {
-				var fdRoll = (roll-getprop("/it-autoflight/fd/roll-bar"))*3;
+				var fdRoll = (getprop("/it-autoflight/fd/roll-bar"))*3;
 				if (fdRoll > 90)
 					fdRoll = 90;
 				elsif (fdRoll < -90)
 					fdRoll = -90;
-				me["fdX"].setTranslation(-fdRoll,0);
+				me["fdX"].setTranslation(fdRoll,0);
 			}
 			if (getprop("/it-autoflight/fd/pitch-bar") != nil) {
-				var fdPitch = (pitch-getprop("/it-autoflight/fd/pitch-bar"))*5;
-				if (fdPitch > 100)
-					fdPitch = 100;
-				elsif (fdPitch < -75)
-					fdPitch = -75;
-				me["fdY"].setTranslation(0,fdPitch);
+				var fdPitch = (getprop("/it-autoflight/fd/pitch-bar"))*3;
+				if (fdPitch > 60)
+					fdPitch = 60;
+				elsif (fdPitch < -45)
+					fdPitch = -45;
+				me["fdY"].setTranslation(0,-fdPitch);
 			}
 			me["fdX"].show();
 			me["fdY"].show();
@@ -276,46 +270,33 @@ var canvas_PFD = {
 	},
 	update_ap_modes: func()
 	{
-		# Modes
-		if (getprop("autopilot/locks/passive-mode") == 1)
-			me["afdsMode"].setText("FD");
-		elsif (getprop("autopilot/locks/altitude") != "" or getprop("autopilot/locks/heading") != "" or getprop("autopilot/locks/speed") != "")
+		if (itaf.Output.ap1.getValue() or itaf.Output.ap2.getValue()) {
 			me["afdsMode"].setText("CMD");
-		else
+		} elsif (itaf.Output.fd1.getValue() or itaf.Output.fd2.getValue()) {
+			me["afdsMode"].setText("FD");
+		} else {
 			me["afdsMode"].setText("");
+		}
 		
-		var apSpd = getprop("/autopilot/locks/speed");
-		if (apSpd == "speed-with-throttle")
-			me["atMode"].setText("SPD");
-		elsif (apSpd ==  "speed-with-pitch-trim")
-			me["atMode"].setText("THR");
+		me["atMode"].setText(itaf.Text.thr.getValue());
+		me["atArmText"].setText("");
+		me["rollMode"].setText(itaf.Text.lat.getValue());
+		me["latArmText"].setText(itaf.Text.arm.getValue());
+		me["pitchMode"].setText(itaf.Text.vert.getValue());
+		
+		if (itaf.Output.apprArm.getValue())
+		    me["vertArmText"].setText("G/S");
 		else
-			me["atMode"].setText("");
-		var apRoll = getprop("/autopilot/locks/heading");
-		if (apRoll == "wing-leveler")
-			me["rollMode"].setText("HDG HOLD");
-		elsif (apRoll ==  "dg-heading-hold")
-			me["rollMode"].setText("HDG SEL");
-		elsif (apRoll ==  "nav1-hold")
-			me["rollMode"].setText("LNAV");
-		else
-			me["rollMode"].setText("");
-		me["vsPointer"].hide();
-		var apPitch = getprop("/autopilot/locks/altitude");
-		if (apPitch == "vertical-speed-hold") {
-			me["pitchMode"].setText("V/S");
+		    me["vertArmText"].setText("");
+			
+		if (itaf.Output.vert.getValue() == 1)
 			me["vsPointer"].show();
-		} elsif (apPitch ==  "altitude-hold")
-			me["pitchMode"].setText("ALT");
-		elsif (apPitch ==  "gs1-hold")
-			me["pitchMode"].setText("G/S");
-		elsif (apPitch ==  "speed-with-pitch-trim")
-			me["pitchMode"].setText("FLCH SPD");
 		else
-			me["pitchMode"].setText("");
+			me["vsPointer"].hide();
 	},
 	update_slow: func()
 	{
+		me.update_ap_modes();
 		var wow = getprop("gear/gear/wow");
 		var flaps = getprop("/controls/flight/flaps");
 		var alt = getprop("instrumentation/altimeter/indicated-altitude-ft");

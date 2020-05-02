@@ -5968,7 +5968,7 @@
        height="1024" /><text
        inkscape:label="#text3956"
        sodipodi:linespacing="125%"
-       id="text3832"
+       id="latArmText"
        y="87.782021"
        x="461.90134"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22px;line-height:125%;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none"
@@ -5983,7 +5983,7 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22px;line-height:125%;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none"
        x="283.00351"
        y="87.782021"
-       id="text3836"
+       id="atArmText"
        sodipodi:linespacing="125%"
        inkscape:label="#text3956"><tspan
          sodipodi:role="line"
@@ -5994,7 +5994,7 @@
 <text
        inkscape:label="#text3956"
        sodipodi:linespacing="125%"
-       id="text3840"
+       id="vertArmText"
        y="87.782021"
        x="642.92047"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:22px;line-height:125%;font-family:Liberation Sans;-inkscape-font-specification:Liberation Sans;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#ffffff;fill-opacity:1;stroke:none"

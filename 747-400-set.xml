@@ -850,6 +850,9 @@ left mouse button and counter clockwise using the middle mouse button.
 </systems>
 
 <nasal>
+	<itaf>
+  	  <file>Aircraft/747-400/Nasal/it-autoflight.nas</file>
+	</itaf>
 	<Boeing747>
 		<!--<file>Aircraft/747-400/Nasal/autopilot.nas</file>
 		<file>Aircraft/747-400/Nasal/autopilot-routemanager.nas</file>-->
@@ -894,9 +897,6 @@ left mouse button and counter clockwise using the middle mouse button.
 	<walk>
 		<file>Aircraft/747-400/Nasal/walk.nas</file>
 	</walk>
-	<itaf>
-  	  <file>Aircraft/747-400/Nasal/it-autoflight.nas</file>
-	</itaf>
 </nasal>
 
 <payload>

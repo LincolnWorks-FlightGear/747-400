@@ -225,10 +225,10 @@ var ITAF = {
 		Internal.altCaptureActive = 0;
 		Input.ias.setValue(250);
 		Input.mach.setValue(0.5);
-		Text.thr.setValue(" PITCH");
+		Text.thr.setValue("THR REF");
 		Text.arm.setValue(" ");
-		Text.lat.setValue("T/O");
-		Text.vert.setValue("T/O CLB");
+		Text.lat.setValue("TO/GA");
+		Text.vert.setValue("TO/GA");
 		loopTimer.start();
 		slowLoopTimer.start();
 	},
@@ -291,8 +291,8 @@ var ITAF = {
 					Text.vert.setValue("FLARE");
 				}
 				if (Gear.wow1Temp and Gear.wow2Temp) {
-					Text.lat.setValue("RLOU");
-					Text.vert.setValue("ROLLOUT");
+					Text.lat.setValue("ROLLOUT");
+					Text.vert.setValue("FLARE");
 				}
 			}
 		}
@@ -324,37 +324,37 @@ var ITAF = {
 		if (Internal.altCaptureActive) {
 			if (abs(Internal.altDiff) <= 25) {
 				me.resetClimbRateLim();
-				Text.vert.setValue("ALT HLD");
+				Text.vert.setValue("ALT");
 			}
 		}
 		
 		# Thrust Mode Selector
 		if (Output.athr.getBoolValue() and Output.vertTemp != 7 and Setting.retardEnable.getBoolValue() and Position.gearAglFt.getValue() <= Setting.retardAltitude.getValue() and Misc.flapNorm.getValue() >= Setting.landingFlap.getValue() - 0.001) {
 			Output.thrMode.setValue(1);
-			Text.thr.setValue("RETARD");
+			Text.thr.setValue("IDLE");
 			if (Gear.wow1Temp or Gear.wow2Temp) { # Disconnect A/THR on either main gear touch
 				me.athrMaster(0);
 			}
 		} else if (Output.vertTemp == 4) {
 			if (Internal.altTemp >= Position.indicatedAltitudeFtTemp) {
 				Output.thrMode.setValue(2);
-				Text.thr.setValue(" PITCH");
+				Text.thr.setValue("THR REF");
 				if (Internal.flchActive) { # Set before mode change to prevent it from overwriting by mistake
-					Text.vert.setValue("SPD CLB");
+					Text.vert.setValue("FLCH SPD");
 				}
 			} else {
 				Output.thrMode.setValue(1);
-				Text.thr.setValue(" PITCH");
+				Text.thr.setValue("THR REF");
 				if (Internal.flchActive) { # Set before mode change to prevent it from overwriting by mistake
-					Text.vert.setValue("SPD DES");
+					Text.vert.setValue("FLCH SPD");
 				}
 			}
 		} else if (Output.vertTemp == 7) {
 			Output.thrMode.setValue(2);
-			Text.thr.setValue(" PITCH");
+			Text.thr.setValue("THR REF");
 		} else {
 			Output.thrMode.setValue(0);
-			Text.thr.setValue("THRUST");
+			Text.thr.setValue("SPD");
 		}
 	},
 	slowLoop: func() {
@@ -555,7 +555,7 @@ var ITAF = {
 			Output.locArm.setBoolValue(0);
 			Output.apprArm.setBoolValue(0);
 			Output.lat.setValue(0);
-			Text.lat.setValue("HDG");
+			Text.lat.setValue("HDG SEL");
 			if (Output.vertTemp == 2 or Output.vertTemp == 6) { # Also cancel G/S or FLARE if active
 				me.setVertMode(1);
 			} else {
@@ -573,7 +573,7 @@ var ITAF = {
 			Output.apprArm.setBoolValue(0);
 			me.syncHDG();
 			Output.lat.setValue(0);
-			Text.lat.setValue("HDG");
+			Text.lat.setValue("HDG HOLD");
 			if (Output.vertTemp == 2 or Output.vertTemp == 6) { # Also cancel G/S or FLARE if active
 				me.setVertMode(1);
 			} else {
@@ -591,7 +591,7 @@ var ITAF = {
 			Output.locArm.setBoolValue(0);
 			Output.apprArm.setBoolValue(0);
 			Output.lat.setValue(5);
-			Text.lat.setValue("T/O");
+			Text.lat.setValue("TO/GA");
 			me.armTextCheck();
 		}
 	},
@@ -618,7 +618,7 @@ var ITAF = {
 			Output.apprArm.setBoolValue(0);
 			Output.vert.setValue(0);
 			me.resetClimbRateLim();
-			Text.vert.setValue("ALT HLD");
+			Text.vert.setValue("ALT");
 			me.syncALT();
 			me.armTextCheck();
 		} else if (n == 1) { # V/S
@@ -642,15 +642,11 @@ var ITAF = {
 			Output.vert.setValue(0);
 			me.setClimbRateLim();
 			Internal.altCaptureActive = 1;
-			Text.vert.setValue("ALT CAP");
+			Text.vert.setValue("ALT");
 		} else if (n == 4) { # FLCH
 			Output.apprArm.setBoolValue(0);
-			if (abs(Input.altDiff) >= 125) { # SPD CLB or SPD DES
-				if (Input.alt.getValue() >= Position.indicatedAltitudeFt.getValue()) { # Usually set Thrust Mode Selector, but we do it now due to timer lag
-					Text.vert.setValue("SPD CLB");
-				} else {
-					Text.vert.setValue("SPD DES");
-				}
+			if (abs(Input.altDiff) >= 125) {
+				Text.vert.setValue("FLCH SPD");
 				Internal.altCaptureActive = 0;
 				Output.vert.setValue(4);
 				Internal.flchActive = 1;
@@ -659,7 +655,7 @@ var ITAF = {
 				Internal.alt.setValue(Input.alt.getValue());
 				Internal.altCaptureActive = 1;
 				Output.vert.setValue(0);
-				Text.vert.setValue("ALT CAP");
+				Text.vert.setValue("ALT");
 			}
 			me.armTextCheck();
 		} else if (n == 5) { # FPA
@@ -809,23 +805,23 @@ var ITAF = {
 			}
 			me.setLatMode(3);
 			me.setVertMode(7);
-			Text.vert.setValue("G/A CLB");
+			Text.vert.setValue("TO/GA");
 			Input.ktsMach.setBoolValue(0);
 			me.syncIAS();
 		} else if (Gear.wow1Temp or Gear.wow2Temp) {
 			me.athrMaster(1);
 			me.setLatMode(5);
 			me.setVertMode(7);
-			Text.vert.setValue("T/O CLB");
+			Text.vert.setValue("TO/GA");
 		}
 	},
 	armTextCheck: func() {
 		if (Output.apprArm.getBoolValue()) {
-			Text.arm.setValue("ILS");
+			Text.arm.setValue("LOC");
 		} else if (Output.locArm.getBoolValue()) {
 			Text.arm.setValue("LOC");
 		} else if (Output.lnavArm.getBoolValue()) {
-			Text.arm.setValue("LNV");
+			Text.arm.setValue("LNAV");
 		} else {
 			Text.arm.setValue(" ");
 		}
