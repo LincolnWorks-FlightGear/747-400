@@ -8,7 +8,7 @@ var arm = nil;
 setlistener("/it-autoflight/mode/arm", func() {
 	arm = Text.arm.getValue();
 	if (arm == "ILS") {
-		fmaArm.setValue("ROLLOUT");
+		fmaArm.setValue("LOC");
 	} elsif (arm == "LNV") {
 		fmaArm.setValue("LNAV");
 	} elsif (arm == "LOC") {
