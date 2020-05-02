@@ -20,7 +20,7 @@ setlistener("/it-autoflight/mode/arm", func() {
 
 var lat = nil;
 
-setlistener("/it-autoflight/mode/lat", func() {
+var updateLat = func() {
 	lat = Text.lat.getValue();
 	if (lat == "T/O") {
 		fmaLat.setValue("TO/GA");
@@ -29,7 +29,7 @@ setlistener("/it-autoflight/mode/lat", func() {
 	} elsif (lat == "RLOU") {
 		fmaLat.setValue("ROLLOUT");
 	} elsif (lat == "HDG") {
-		if (Input.lat.getValue() == 0) {
+		if (!Output.hdgInHld.getBoolValue()) {
 			fmaLat.setValue("HDG SEL");
 		} else {
 			fmaLat.setValue("HDG HOLD");
@@ -41,7 +41,10 @@ setlistener("/it-autoflight/mode/lat", func() {
 	} else {
 		fmaLat.setValue(" ");
 	}
-});
+}
+
+setlistener("/it-autoflight/mode/lat", updateLat);
+setlistener("/it-autoflight/output/hdg-in-hld", updateLat);
 
 var vert = nil;
 
