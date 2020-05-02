@@ -75,7 +75,7 @@ var thr = nil;
 
 setlistener("/it-autoflight/mode/thr", func() {
 	thr = Text.thr.getValue();
-	if (thr == " PITCH") {
+	if (thr == "PITCH") {
 		fmaThr.setValue("THR REF");
 	} elsif (thr == "RETARD") {
 		fmaThr.setValue("IDLE");
