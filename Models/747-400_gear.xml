@@ -98,7 +98,7 @@
 
 <model>
  <name>tyre-smoke-4</name>
- <path>Aircraft/747-400/Models/Effects/wet-runway-right.xml.xml</path>
+ <path>Aircraft/747-400/Models/Effects/wet-runway-right.xml</path>
  <offsets>
   <x-m>  1.607</x-m>
   <y-m>  5.511</y-m>
