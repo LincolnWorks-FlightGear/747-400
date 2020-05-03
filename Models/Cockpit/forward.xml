@@ -418,10 +418,9 @@
 		<button>0</button>
 		<repeatable>false</repeatable>  
 		<binding>
-			<command>property-cycle</command>
-			<property>/autopilot/locks/heading</property>
-			<value type="string">nav1-hold</value>
-			<value type="string"></value>
+			<command>property-assign</command>
+			<property>/it-autoflight/input/lat</property>
+			<value>1</value>
 		</binding>
 	</action>
 </animation>
