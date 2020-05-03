@@ -54,7 +54,7 @@
  </offsets>
 </model>
  
- <!-- Wet runway effect -->
+<!-- Wet runway effect -->
 
 <model>
  <name>tyre-smoke-0</name>
@@ -70,7 +70,7 @@
  <name>tyre-smoke-1</name>
  <path>Aircraft/747-400/Models/Effects/wet-runway-left.xml</path>
  <offsets>
-  <x-m>  -4.607</x-m>
+  <x-m>  -14.607</x-m>
   <y-m> -5.511</y-m>
   <z-m> -5.055</z-m>
  </offsets>
@@ -80,7 +80,7 @@
  <name>tyre-smoke-2</name>
  <path>Aircraft/747-400/Models/Effects/wet-runway-nose.xml</path>
  <offsets>
-  <x-m>  0.473</x-m>
+  <x-m>  -10.473</x-m>
   <y-m> -1.904</y-m>
   <z-m> -5.055</z-m>
  </offsets>
@@ -90,7 +90,7 @@
  <name>tyre-smoke-3</name>
  <path>Aircraft/747-400/Models/Effects/wet-runway-right.xml</path>
  <offsets>
-  <x-m>  0.473</x-m>
+  <x-m>  -10.473</x-m>
   <y-m>  1.904</y-m>
   <z-m> -5.055</z-m>
  </offsets>
@@ -100,7 +100,7 @@
  <name>tyre-smoke-4</name>
  <path>Aircraft/747-400/Models/Effects/wet-runway-right.xml</path>
  <offsets>
-  <x-m>  -4.607</x-m>
+  <x-m>  -14.607</x-m>
   <y-m>  5.511</y-m>
   <z-m> -5.055</z-m>
  </offsets>
