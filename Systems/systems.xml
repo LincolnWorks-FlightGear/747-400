@@ -35,6 +35,7 @@
         <switch name="systems/stick-shaker">
             <default value="0"/>
             <test  logic="AND" value="1">
+				aero/ground-switch eq 1
                 aero/alpha-deg GT systems/stick-shaker-alpha-deg
             </test>
             <output>systems/stick-shaker</output>
@@ -56,15 +57,11 @@
         </fcs_function>
 		
 		<!-- switch to disable beta effect on ground -->
-		<switch name="aero/beta-switch">
+		<switch name="aero/ground-switch">
             <description>Aircraft on ground</description>
             <default value="1"/>
             <test value="0" logic="OR">
                 gear/unit[0]/WOW ne 0
-                gear/unit[1]/WOW ne 0
-                gear/unit[2]/WOW ne 0
-                gear/unit[3]/WOW ne 0
-                gear/unit[4]/WOW ne 0
             </test>
         </switch>
 

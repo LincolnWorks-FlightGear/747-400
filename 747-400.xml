@@ -4681,7 +4681,7 @@
         <function name="aero/coefficient/Cn_beta">
             <description>Yaw_moment_due_to_beta_coefficient</description>
             <product>
-                <property>aero/beta-switch</property>
+                <property>aero/ground-switch</property>
                 <property>aero/beta-deg</property>
                 <sum>
                     <product>
