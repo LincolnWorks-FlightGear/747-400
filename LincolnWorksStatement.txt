@@ -1,1 +1,3 @@
 Hello, We are aware of the aircraft sometimes jumping up with the nosewheel. This is because the taxiway lines may have a slight height difference. this makes the aircraft think she passes over a huge bump. We hope to fix this but for now nothing we can do about it. - LincolnWorks 
+
+And we are also aware that the plane is underpowered from FL240 and up. We are fixing this soon but we cant give an ETA for this. 
