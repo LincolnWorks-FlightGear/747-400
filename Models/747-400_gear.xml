@@ -78,7 +78,7 @@
 
 <model>
  <name>tyre-smoke-2</name>
- <path>Aircraft/747-400/Models/Effects/wet-runway-nose.xml.xml</path>
+ <path>Aircraft/747-400/Models/Effects/wet-runway-nose.xml</path>
  <offsets>
   <x-m>  5.473</x-m>
   <y-m> -1.904</y-m>
