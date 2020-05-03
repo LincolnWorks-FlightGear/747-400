@@ -389,8 +389,7 @@ left mouse button and counter clockwise using the middle mouse button.
 			<td>0.001</td>
 		</pitch>
 		<cmd>
-			<hdg>1.6</hdg>
-			<vorloc>2.6</vorloc>
+			<roll>1.6</roll>
 			<alt-gain>-5</alt-gain>
 		</cmd>
 		<autoland> 
