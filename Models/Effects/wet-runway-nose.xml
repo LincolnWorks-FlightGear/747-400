@@ -22,7 +22,7 @@
 		</greater-than>
      		<greater-than>
        			<property>velocities/groundspeed-kt</property>
-       			<value>60</value>
+       			<value>30</value>
        		</greater-than>
                 	<property>gear/gear[0]/wow</property>
                 	<value>1</value>
