@@ -444,9 +444,9 @@
 		<repeatable>false</repeatable>  
 		<binding>
 			<command>property-cycle</command>
-			<property>/autopilot/locks/speed</property>
-			<value type="string">speed-with-throttle</value>
-			<value type="string"></value>
+			<property>/it-autoflight/input/athr</property>
+			<value>1</value>
+			<value>0</value>
 		</binding>
 	</action>
 </animation>
