@@ -89,7 +89,7 @@
 		</door>
 		<hide-yoke type="bool">0</hide-yoke>
 		<autopush include="autopush-config.xml"/>
-		<fallback-model-index type="int">352</fallback-model-index>
+		<fallback-model-index type="int">351</fallback-model-index>
 	</model>
 	
 	<systems>
