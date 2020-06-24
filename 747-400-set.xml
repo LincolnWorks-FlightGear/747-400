@@ -399,21 +399,24 @@ left mouse button and counter clockwise using the middle mouse button.
 		</autoland>
 		<rollout>
 			<roll-kp>-0.1</roll-kp>
-			<pitch-defl>0.15</pitch-defl>
+			<pitch-nose>0.1</pitch-nose>
+			<pitch-rate>-1.5</pitch-rate>
 			<yaw-kp>-0.02</yaw-kp>
 		</rollout>
 	</config>
 	<settings>
+		<autoland-without-ap>1</autoland-without-ap> <!-- Engage LAND and FLARE Modes even if the AP is off -->
 		<auto-bank-max-deg>30</auto-bank-max-deg> <!-- Maximum Auto Bank Limit -->
+		<autothrottle-max>0.95</autothrottle-max> <!-- Thrust Max Limit Normalized -->
+		<autothrottle-min>0.02</autothrottle-min> <!-- Thrust Low Limit Normalized -->
 		<disable-final>0</disable-final> <!-- Disable the Final Controllers, for custom FCS integration -->
 		<land-enable>1</land-enable> <!-- Enable/Disable Autoland -->
 		<land-flap>0.7</land-flap> <!-- Minimum Flap used for Landing -->
-		<retard-ft>50</retard-ft> <!-- Enable Thrust Retard -->
-		<retard-enable>1</retard-enable> <!-- AGL to Thrust Retard -->
-		<togaspd>160</togaspd> <!-- V2 + 10kts -->
 		<lat-agl-ft>50</lat-agl-ft> <!-- AGL when LNAV becomes active if armed -->
 		<reduc-agl-ft>1500</reduc-agl-ft> <!-- AGL when T/O CLB changes to SPD CLB (FLCH), set to 0 to disable -->
-		<autoland-without-ap>1</autoland-without-ap> <!-- Engage LAND and FLARE Modes even if the AP is off -->
+		<retard-enable>1</retard-enable> <!-- AGL to Thrust Retard -->
+		<retard-ft>50</retard-ft> <!-- Enable Thrust Retard -->
+		<togaspd>160</togaspd> <!-- V2 + 10kts -->
 	</settings>
 </it-autoflight>
 
