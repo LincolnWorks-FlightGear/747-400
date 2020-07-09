@@ -365,7 +365,7 @@
     <type>gain</type>
     <gain>0.000675</gain>
     <input>
-      <property>it-autoflight/input/spd-kts</property>
+      <property>it-autoflight/input/kts</property>
     </input>
     <reference>
       <property>instrumentation/airspeed-indicator/indicated-speed-kt</property>

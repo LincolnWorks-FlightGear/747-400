@@ -1088,7 +1088,7 @@ var listenerApSpeedWithPitchSwitchFunc = func {
 
 setlistener("/autopilot/locks/speed", listenerApSpeedWithPitchFunc);
 setlistener("/autopilot/locks/speed", listenerApSpeedWithPitchClambFunc);
-setlistener("/it-autoflight/input/spd-kts", listenerApSpeedWithPitchClambFunc);
+setlistener("/it-autoflight/input/kts", listenerApSpeedWithPitchClambFunc);
 setlistener("/autopilot/locks/speed", listenerApSpeedWithPitchSwitchFunc);
 
 

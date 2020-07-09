@@ -481,7 +481,7 @@
 				</not>
 			</condition>
 			<command>property-adjust</command>
-			<property>/it-autoflight/input/spd-kts</property>
+			<property>/it-autoflight/input/kts</property>
 			<factor>1</factor>
 			<min>100</min>
 			<max>399</max>
@@ -494,7 +494,7 @@
 				</equals>
 			</condition>
 			<command>property-adjust</command>
-			<property>/it-autoflight/input/spd-mach</property>
+			<property>/it-autoflight/input/mach</property>
 			<factor>0.01</factor>
 			<min>0.40</min>
 			<max>0.95</max>
@@ -505,7 +505,7 @@
 <animation>
 	<type>textranslate</type>
 	<object-name>dis.spd.1</object-name>
-	<property>it-autoflight/input/spd-kts</property>
+	<property>it-autoflight/input/kts</property>
 	<factor>0.001</factor>
 	<step>100</step>
 	<condition>
@@ -526,7 +526,7 @@
 <animation>
 	<type>textranslate</type>
 	<object-name>dis.spd.2</object-name>
-	<property>it-autoflight/input/spd-kts</property>
+	<property>it-autoflight/input/kts</property>
 	<factor>0.01</factor>
 	<step>10</step>
 	<condition>
@@ -547,7 +547,7 @@
 <animation>
 	<type>textranslate</type>
 	<object-name>dis.spd.3</object-name>
-	<property>it-autoflight/input/spd-kts</property>
+	<property>it-autoflight/input/kts</property>
 	<factor>0.1</factor>
 	<step>1</step>
 	<condition>

@@ -69,7 +69,7 @@
                 <type>bool</type><property type="string">/controls/lighting/landing-light-outbdr</property>
             </signal>
             <signal>
-                <type>int16</type><property type="string">/it-autoflight/input/spd-kts</property>
+                <type>int16</type><property type="string">/it-autoflight/input/kts</property>
             </signal>
             <signal>
                 <type>int</type><property type="string">/it-autoflight/input/alt</property>

@@ -112,7 +112,7 @@
 					<value>183</value>
 				</equals>
 				<equals>
-					<property>/it-autoflight/input/spd-kts</property>
+					<property>/it-autoflight/input/kts</property>
 					<property>/instrumentation/fmc/vspeeds/V2</property>
 				</equals>
 				<equals>

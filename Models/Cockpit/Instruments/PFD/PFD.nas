@@ -70,7 +70,7 @@ var canvas_PFD = {
 		var vSpd = getprop("/velocities/vertical-speed-fps");
 		var wow = getprop("/gear/gear/wow");
 		var apAlt = getprop("/it-autoflight/input/alt");
-		var apSpd = getprop("/it-autoflight/input/spd-kts");
+		var apSpd = getprop("/it-autoflight/input/kts");
 		
 		#10 deg = 105px
 		me.h_trans.setTranslation(0,pitch*10.5);
@@ -300,7 +300,7 @@ var canvas_PFD = {
 		var wow = getprop("gear/gear/wow");
 		var flaps = getprop("/controls/flight/flaps");
 		var alt = getprop("instrumentation/altimeter/indicated-altitude-ft");
-		var apSpd = getprop("it-autoflight/input/spd-kts");
+		var apSpd = getprop("it-autoflight/input/kts");
 		var dh = getprop("instrumentation/mk-viii/inputs/arinc429/decision-height");
 		
 		if (var navId = getprop("instrumentation/nav/data-is-valid") != nil)
