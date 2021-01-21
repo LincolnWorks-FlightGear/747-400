@@ -1407,105 +1407,10 @@
 <!-- Yokes -->
 
 <model>
-	<name>EFB1</name>
-	<path>Aircraft/747-400/Models/Cockpit/Instruments/EFB/EFB.xml</path>
-	<offsets>
-		<x-m> 1.063</x-m>
-		<y-m>-0.533</y-m>
-		<z-m> 0.765</z-m>
-		<pitch-deg>-8</pitch-deg>
-	</offsets>
+<name>Yokes</name>
+<path>Aircraft/747-400/Models/Cockpit/yokes.xml</path>
 </model>
 
-<model>
-	<name>EFB2</name>
-	<path>Aircraft/747-400/Models/Cockpit/Instruments/EFB/EFB.xml</path>
-	<offsets>
-		<x-m>1.063</x-m>
-		<y-m>0.533</y-m>
-		<z-m>0.765</z-m>
-		<pitch-deg>-8</pitch-deg>
-	</offsets>
-</model>
-
-<animation>
-	<type>select</type>
-	<object-name>EFB1</object-name>
-	<object-name>EFB2</object-name>
-	<object-name>left_chart</object-name>
-	<object-name>left_column</object-name>
-	<object-name>left_yoke</object-name>
-	<object-name>right_chart</object-name>
-	<object-name>right_column</object-name>
-	<object-name>right_yoke</object-name>
-	<condition>
-		<not>
-			<property>sim/model/hide-yoke</property>
-		</not>
-	</condition>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>left_chart</object-name>
-	<object-name>left_column</object-name>
-	<object-name>left_yoke</object-name>
-	<object-name>EFB1</object-name>
-	<object-name>right_chart</object-name>
-	<object-name>right_column</object-name>
-	<object-name>right_yoke</object-name>
-	<object-name>EFB2</object-name>
-	<property>controls/flight/elevator</property>
-	<factor>12.5</factor>
-	<center>
-		<x-m> 1.10</x-m>
-		<y-m> 0.0</y-m>
-		<z-m>-0.025</z-m>
-	</center>
-	<axis>
-		<x> 0.0</x>
-		<y>-1.0</y>
-		<z> 0.0</z>
-	</axis>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>left_chart</object-name>
-	<object-name>left_yoke</object-name>
-	<object-name>EFB1</object-name>
-	<property>controls/flight/aileron</property>
-	<factor>88</factor>
-	<center>
-		<x-m> 1.048</x-m>
-		<y-m>-0.533</y-m>
-		<z-m> 0.724</z-m>
-	</center>
-	<axis>
-		<x>-1.0</x>
-		<y> 0.0</y>
-		<z> 0.0</z>
-	</axis>
-</animation>
-
-<animation>
-	<type>rotate</type>
-	<object-name>right_chart</object-name>
-	<object-name>right_yoke</object-name>
-	<object-name>EFB2</object-name>
-	<property>controls/flight/aileron</property>
-	<factor>88</factor>
-	<center>
-		<x-m>1.048</x-m>
-		<y-m>0.533</y-m>
-		<z-m>0.724</z-m>
-	</center>
-	<axis>
-		<x>-1.0</x>
-		<y> 0.0</y>
-		<z> 0.0</z>
-	</axis>
-</animation>
 
 <!-- Rudder pedals -->
 
